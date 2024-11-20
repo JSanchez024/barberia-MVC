@@ -33,7 +33,7 @@
 
     <div class="campo">
         <label for="password">Password</label>
-        <input type="Password" id="Password" name="Password" placeholder="Tu Password">
+        <input type="password" id="password" name="password" placeholder="Tu Password">
     </div>
 
     <div>

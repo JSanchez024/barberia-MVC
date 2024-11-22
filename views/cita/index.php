@@ -12,7 +12,7 @@
     <div class="seccion" id="paso-1">
         <h2>Servicios</h2>
         <p class="text-center">Elige tus Servicios a continuacion</p>
-        <div class="listado-servicios"></div>
+        <div class="listado-servicios" id="servicios"></div>
     </div>
     <div class="seccion" id="paso-2">
         <h2>Tus Datos y Cita</h2>
@@ -27,8 +27,9 @@
 
             <div class="campo">
                 <label for="nombre">Fecha</label>
-                <input type="date" id="fecha">
+                <input type="date" id="fecha" min="<?php echo date('Y-m-d', strtotime('+1 day') ); ?>">
             </div>
+
 
             <div class="campo">
                 <label for="nombre">Hora</label>
@@ -37,7 +38,7 @@
         </form> 
 
     </div>
-    <div class="seccion" id="paso-3">
+    <div class="seccion contenido-resumen" id="paso-3">
         <h2>Resumen</h2>
         <p class="text-center">Revisa que la Informacion sea Correcta</p>
     </div>

@@ -1,5 +1,3 @@
-//const { series } = require("gulp");
-
 let paso = 1;
 let pasoInicial = 1;
 let pasoFinal = 3;
@@ -12,11 +10,9 @@ const cita = {
     servicios: []
 }
 
-
 document.addEventListener('DOMContentLoaded', function(){
     iniciarApp();
 });
-
 
 function iniciarApp(){
     mostrarSeccion(); 
@@ -86,7 +82,6 @@ function botonesPaginador(){
         paginaAnterior.classList.remove('ocultar');
         paginaSiguiente.classList.remove('ocultar');
     }
-
     mostrarSeccion();
 }
 
@@ -140,7 +135,6 @@ function mostrarServicios(servicios){
         servicioDiv.appendChild(nombreServicio);
         servicioDiv.appendChild(precioServicio);
 
-
         document.querySelector('#servicios').appendChild(servicioDiv);
     })
 }
@@ -160,7 +154,6 @@ function seleccionarServicio(servicio){
         //Agregar
         cita.servicios = [...servicios, servicio];
         divServicio.classList.add('seleccionado');
-
     }
 
     console.log(cita);
@@ -198,7 +191,6 @@ function seleccionarHora(){
             mostrarAlerta('Hora no valida', 'error', '.formulario');
         }else{
             cita.hora = e.target.value;
-
             console.log(cita);
         }
     })  
@@ -258,8 +250,6 @@ function mostrarResumen(){
     const opciones = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
     const fechaFormateada = fechaUTC.toLocaleDateString('es-CH', opciones);
     
-     
-
     const fechaCliente = document.createElement('P');
     fechaCliente.innerHTML = `<span>Fecha:</span> ${fechaFormateada}`;
 
@@ -270,7 +260,6 @@ function mostrarResumen(){
     const headingServicios = document.createElement('H3');
     headingServicios.textContent = 'Resumen de Servicios';
     resumen.appendChild(headingServicios);
-
 
     servicios.forEach(servicio =>{
         const {id, precio, nombre} = servicio;
@@ -299,19 +288,16 @@ function mostrarResumen(){
     botonReservar.textContent = 'Reservar Cita';
     botonReservar.onclick = reservarCita;
 
-
     resumen.appendChild(nombreCliente);
     resumen.appendChild(fechaCliente);
     resumen.appendChild(horaCliente);
 
     resumen.appendChild(botonReservar);
-
 }
 
 async function reservarCita(){
     const {nombre, fecha, hora, servicios, id} = cita;
     const idServicios = servicios.map(servicio => servicio.id);
-
 
     const datos = new FormData();
     datos.append('fecha', fecha);
@@ -341,7 +327,6 @@ async function reservarCita(){
                 window.location.reload();
             }, 3000);
         })
-        
     }
         
     } catch (error) {
@@ -350,11 +335,5 @@ async function reservarCita(){
             title: "Error",
             text: "Hubo un error al guardar la cita"
           });
-        
     }
-
-
-    
 }
-
-

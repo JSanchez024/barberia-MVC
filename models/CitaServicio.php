@@ -17,5 +17,4 @@ class CitaServicio extends ActiveRecord{
         $this->servicioId = $args['servicioId'] ?? '';
     }
 
-
 }

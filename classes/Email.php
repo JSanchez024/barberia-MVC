@@ -43,10 +43,8 @@ class Email{
         $contenido .= "</html>";
         $mail->Body = $contenido;
 
-
         //Enviar el email
         $mail->send();
-
     }
 
     public function enviarInstrucciones(){
@@ -74,7 +72,6 @@ class Email{
         $contenido .= "<p>Si tu no solicitaste esta cuenta, puedes ignorar este mensaje";
         $contenido .= "</html>";
         $mail->Body = $contenido;
-
 
         //Enviar el email
         $mail->send();

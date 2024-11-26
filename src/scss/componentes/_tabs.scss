@@ -2,10 +2,8 @@
 @use 'base/mixins' as m;
 
 .tabs{
-
     @include m.tablet{
         display: flex;
-
     }
 
     button{
@@ -19,7 +17,6 @@
         text-transform: uppercase;
         font-weight: v.$bold;
         transition:background-color 300ms ease;
-
 
         &:hover{
             cursor:pointer;

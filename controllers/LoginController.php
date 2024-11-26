@@ -72,8 +72,6 @@ class LoginController{
 
             if(empty($alertas)){
                 $usuario = Usuario::where('email', $auth->email);
-
-                //debuguear($usuario);
                 if($usuario && $usuario->confirmado === "1"){
                     //generando token
                     $usuario->crearToken();
@@ -86,22 +84,15 @@ class LoginController{
                     //Alerta de exito
                     Usuario::setAlerta('exito', 'revisa tu email');
                     $alertas = Usuario::getAlertas();
-
-
-                    // debuguear($usuario);
                 }else{
                     Usuario::setAlerta('error', 'El Usuario no existe o no esta confirmado');
                 }
             }
-            
         }
 
         $alertas = Usuario::getAlertas();
-        //SI TENGO UN PROBLEMA ES EL VIDEO 478 PARA ATRAS
-
         $router->render('auth/olvide-password',[
             'alertas' => $alertas
-
         ]);
     }
 
@@ -113,8 +104,6 @@ class LoginController{
         //Buscar usuario por token
         $usuario = Usuario::where('token', $token);
 
-
-        
         if(empty($usuario)){
             Usuario::setAlerta('error', 'Token No Valido');
             $error = true;
@@ -122,17 +111,14 @@ class LoginController{
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             //Leer el nuevo password y guardarlo
-
             $password = new Usuario($_POST);
             $alertas = $password->validarPassword();
 
             if(empty($alertas)){
                 $usuario->password = null;
-                 
                 $usuario->password = $password->password;
                 $usuario->hashPassword();
                 $usuario->token = null;
-
                 $resultado = $usuario->guardar();
                 if($resultado){
                     header('location: /');
@@ -177,7 +163,6 @@ class LoginController{
                     if($resultado){
                         header('location: /mensaje');
                     }
-                    //debuguear($usuario);
                 }
             }
         }

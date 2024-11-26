@@ -6,7 +6,6 @@ class AdminCita extends ActiveRecord{
     protected static $tabla = 'citasservicios';
     protected static $columnasDB = ['id', 'hora', 'cliente', 'email', 'telefono', 'servicio', 'precio'];
 
-
     public $id;
     public $hora;
     public $cliente;
@@ -14,7 +13,6 @@ class AdminCita extends ActiveRecord{
     public $telefono;
     public $servicio;
     public $precio;
-
 
     public function __construct()
     {
@@ -26,5 +24,4 @@ class AdminCita extends ActiveRecord{
         $this->servicio = $args['servicio'] ?? '';
         $this->precio = $args['precio'] ?? '';
     }
-
 }

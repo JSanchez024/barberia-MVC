@@ -56,7 +56,6 @@ class ActiveRecord {
                 $objeto->$key = $value;
             }
         }
-
         return $objeto;
     }
 
@@ -144,11 +143,9 @@ class ActiveRecord {
         // Insertar en la base de datos
         $query = " INSERT INTO " . static::$tabla . " ( ";
         $query .= join(', ', array_keys($atributos));
-        $query .= " ) VALUES ('"; 
+        $query .= ") VALUES ('"; 
         $query .= join("', '", array_values($atributos));
         $query .= "') ";
-
-        //return json_encode(['query' => $query]);
 
         // Resultado de la consulta
         $resultado = self::$db->query($query);
@@ -186,5 +183,4 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         return $resultado;
     }
-
 }

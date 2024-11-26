@@ -91,14 +91,11 @@ class Usuario extends ActiveRecord{
         if($resultado->num_rows){
             self::$alertas['error'][] = "El usuario ya esta registrado";
         }
-
         return $resultado;
-
     }
 
     public function hashPassword(){
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
-
     }
 
     public function crearToken(){
@@ -108,15 +105,10 @@ class Usuario extends ActiveRecord{
     public function comprobarPasswordAndVerificado($password){
         $resultado = password_verify($password, $this->password);
         
-
         if(!$resultado || !$this->confirmado){
             self::$alertas['error'][] = 'Password Incorrecto o tu cuenta no ha sido confirmada';
         }else{
             return true;
         }
-
     }
-
-
-
 }

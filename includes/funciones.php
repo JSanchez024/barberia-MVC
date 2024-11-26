@@ -17,7 +17,6 @@ function esUltimo(string $actual, string $proximo):bool{
     if($actual !== $proximo){
         return true;
     }return false;
-
 }
 
 //revisa que el usuario este autenticado
